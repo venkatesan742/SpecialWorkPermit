@@ -51,7 +51,7 @@ const marriageApp = [{
     PermitPeriodTo: "02/21/2023",
     PassportNumber: 1368,
     PassportExpiryDate: "12/21/2026",
-    JamaicanDetails: {
+    PageNO1: {
     FullName: {
         FirstName: "venkatesan",
         LastName: "kumar",
@@ -107,7 +107,7 @@ const CSMEApp = [{
     },
     Gender: "MALE",
     DateOfBirth: "05/04/2000",
-    Qualification: {
+    PageNo1: {
         HigherQualification: "B.SC",
         NameOfInstitution: "Anna University",
         DateCompleted: "05/04/2000",
@@ -129,7 +129,7 @@ const CSMEApp = [{
     PermitPeriodTo: "02/21/2023",
     PassportNumber: 1368,
     PassportExpiryDate: "12/21/2026",
-    QualifyPRTDetails: {
+    PageNo2: {
     FullName: {
         FirstName: "venkatesan",
         LastName: "kumar",
@@ -150,7 +150,7 @@ const CSMEApp = [{
     Nationality: "indian",
     Qualification: "B.Sc",
     },
-    Business: {
+    PageNo3: {
         EmploymentPosting: "Engineer",
         NatureOfBusiness: "Employed",
         Address: {
@@ -161,7 +161,7 @@ const CSMEApp = [{
             Parish: "" ,
         },  
     },
-    Purpose: {
+    PageNo4: {
         PurposeToJMC: "Employment",
     },
 }]
@@ -197,6 +197,7 @@ const typeDefs = `
         }
 
         type MarriageExemption {
+            PageNO1: JamaicanInformation!
             FullName: TFullName!
             Gender: EGenderType!
             DateOfBirth: String!
@@ -210,7 +211,6 @@ const typeDefs = `
             PermitPeriodTo: String!
             PassportNumber: Int!
             PassportExpiryDate: String!
-            JamaicanDetails: JamaicanInformation!
         }
 
         type JamaicanInformation {
@@ -235,11 +235,14 @@ const typeDefs = `
         }
 
         type CSMEVerification {
+            PageNo1: TEducation!
+            PageNo2: WorkStatus!
+            PageNo3: BusinessDetails!
+            PageNo4: JamaicanPurpose!
             FullName: TFullName!
             Address: TAddress!
             Gender: EGenderType!
             DateOfBirth: String!
-            Qualification: TEducation!
             Country: String!
             PlaceOfBirth: String!
             Nationality: String!
@@ -247,9 +250,6 @@ const typeDefs = `
             MaterialStatus: EMaterialStatus!
             EntryDate: String!
             QualifyingID: String!
-            QualifyPRTDetails: WorkStatus!
-            Business: BusinessDetails!
-            Purpose: JamaicanPurpose!
         }
 
         type TEducation {
